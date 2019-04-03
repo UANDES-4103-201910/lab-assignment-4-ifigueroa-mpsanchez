@@ -6,7 +6,7 @@ class Ticket < ApplicationRecord
     if Order.find(order_id).created_at>Event.find(event_id).start_date
       throw :abort
     end
-    if Event.find(event_id).start_date>created_at
+    if Event.find(TicketType.find(ticket_type_id).event_id).start_date>created_at
       throw :abort
     end
   end
